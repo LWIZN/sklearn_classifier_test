@@ -41,7 +41,7 @@ CLF = [XGBClassifier(n_estimators=2, max_depth=2, learning_rate=1, objective='bi
 
 
 def select_function(num, X_train, Y_train, X_test, Y_test, df_X_train):
-    clf = CLF[num - 1]
+    clf = CLF[num]
 
     clf.fit(X_train, Y_train)
     # Make predictions
@@ -75,6 +75,5 @@ df_X_train = pd.DataFrame(X_train, columns=data.feature_names)
 
 # Select and use classifier
 for i, j in enumerate(CLF_NAME):
-    select_num = i + 1
     print(f'Classifier: {j}\n')
-    select_function(select_num, X_train, Y_train, X_test, Y_test, df_X_train)
+    select_function(i, X_train, Y_train, X_test, Y_test, df_X_train)
